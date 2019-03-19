@@ -1,7 +1,6 @@
 import React from 'react';
-import MovieList from '../pages/MovieList';
 
-class MovieList extends React.Component
+class MovieListEntry extends React.Component
 {
     constructor(props)
     {
@@ -14,23 +13,25 @@ class MovieList extends React.Component
             genre: []
         }
     }
+
     render()
     {
         return <table>
             <tr>
-                <td>{this.state.title}</td> 
+                <td>Title: {this.state.title}</td> 
             </tr>
             <tr>
-                <td>Rating: {this.state.rating}</td>
-                <td>Genres: {this.state.genre}</td>
+                <td>Rating: {this.state.movies.rating}</td>
+                <td>Genres: {this.state.movies.genre}</td>
             </tr>
             <tr>
                 <td>
                     Description: <br/> 
-                    {this.state.description}
+                    {this.state.movies.description}
                 </td>
             </tr>
         </table>;
     }
 }
-export default MovieList;
+
+export default MovieListEntry;
