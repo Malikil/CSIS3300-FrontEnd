@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MoviePage from './pages/MoviePage';
 
-class App extends Component {
+function Home() {
+  return <h2>Movie Theatre</h2>;
+}
+
+function MovieSearch({ match }) {
+  if (isNaN(match.params.search))
+    return <h2>NaN: {match.params.search}</h2>
+  else
+    return <MoviePage id={match.params.search} />;
+}
+
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/movies/:search" component={MovieSearch} />
+          </Switch>
+      </Router>
     );
   }
 }
