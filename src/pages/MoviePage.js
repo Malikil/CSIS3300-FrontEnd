@@ -8,10 +8,10 @@ class MoviePage extends React.Component
         super(props);
         this.state = {
             movieid: props.id,
-            title: "",
-            description: "",
-            rating: "",
-            genre: []
+            title: "Title placeholder",
+            description: "Description placeholder",
+            rating: "RtgPH",
+            genre: ["Genre1", "Genre2"]
         }
     }
     componentDidMount()
@@ -21,10 +21,27 @@ class MoviePage extends React.Component
 
     render()
     {
-        return <div>
-            <h2>Movie Title with id {this.state.movieid}</h2>
-            <p>Description</p>
-            <p>rating and genre</p>
+        return <div class="movieBase">
+            <h2>{this.state.title}</h2>
+            <table>
+                <tr>
+                    <td class="descCol">
+                        <p>
+                            <b>Description:</b><br />
+                            {this.state.description}
+                        </p>
+                        <p>
+                            Genres: {this.state.genre.map((item, index) => (
+                                index > 0 ? `, ${item}` : item
+                            ))}<br />
+                            Rating: {this.state.rating}
+                        </p>
+                    </td>
+                    <td class="showtimes">
+                        List of showtimes
+                    </td>
+                </tr>
+            </table>
         </div>;
     }
 }
