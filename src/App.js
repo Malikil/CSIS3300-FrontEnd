@@ -7,11 +7,11 @@ function Home() {
   return <h2>Movie Theatre</h2>;
 }
 
-function MovieSearch({ match }) {
-  if (isNaN(match.params.search))
-    return <h2>NaN: {match.params.search}</h2>
+function MovieSearch({ location }) {
+  if (location.pathname.includes("genre"))
+    return <h2>looking for genre</h2>;
   else
-    return <MoviePage id={match.params.search} />;
+    return <h2>looking for rating</h2>;
 }
 
 class App extends React.Component {
@@ -20,7 +20,10 @@ class App extends React.Component {
       <Router>
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/movies/:search" component={MovieSearch} />
+              <Route path="/movie/genre/:search" component={MovieSearch} />
+              <Route path="/movie/rating/:search" component={MovieSearch} />
+              <Route path="/movie/:mid" component={MoviePage} />
+              <Route component={Home} />
             </Switch>
       </Router>
     );

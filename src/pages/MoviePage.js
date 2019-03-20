@@ -3,15 +3,16 @@ import './MoviePage.css';
 
 class MoviePage extends React.Component
 {
-    constructor(props)
+    constructor({ match })
     {
-        super(props);
+        super();
+        console.log(match.params.mid);
         this.state = {
-            movieid: props.id,
-            title: "Title placeholder",
-            description: "Description placeholder",
-            rating: "RtgPH",
-            genre: ["Genre1", "Genre2"],
+            movieid: match.params.mid,
+            title: "",
+            description: "",
+            rating: "",
+            genre: [],
             showtimes: []
         }
     }
@@ -28,6 +29,7 @@ class MoviePage extends React.Component
                 genre: data.genres
             });
         });
+        //fetch(`http://localhost:1337/get_schedule/${this.state.movieid}`)
     }
 
     render()
