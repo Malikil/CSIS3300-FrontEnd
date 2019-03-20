@@ -1,5 +1,6 @@
 import React from 'react';
 import './MoviePage.css';
+import ScheduleListItem from "../components/ScheduleListItem";
 
 class MoviePage extends React.Component
 {
@@ -16,6 +17,7 @@ class MoviePage extends React.Component
             showtimes: []
         }
     }
+
     componentDidMount()
     {
         // Fetch goes here
@@ -29,7 +31,13 @@ class MoviePage extends React.Component
                 genre: data.genres
             });
         });
-        //fetch(`http://localhost:1337/get_schedule/${this.state.movieid}`)
+        fetch(`http://localhost:1337/get_schedule/${this.state.movieid}`)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                showtimes: data
+            });
+        });
     }
 
     render()
@@ -52,7 +60,9 @@ class MoviePage extends React.Component
                             </p>
                         </td>
                         <td className="showtimes" valign="top">
-                            List of showtimes
+                            {this.state.showtimes.map((item, index) => (
+                                <ScheduleListItem schedule={item} />
+                            ))}
                         </td>
                     </tr>
                 </tbody>
