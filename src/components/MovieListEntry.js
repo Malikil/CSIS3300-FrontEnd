@@ -10,8 +10,23 @@ class MovieListEntry extends React.Component
             title: "",
             description: "",
             rating: "",
-            genre: []
+            genre: [],
+            movies: []
         }
+    }
+
+    componentDidMount()
+    {
+        // Fetch goes here
+        fetch(`http://localhost:1337/get_${this.props.searchType}/${this.props.search}`)
+        .then(response => response.json())
+        .then(data => {
+           this.setState({
+                movies: data.map((item, index) => (
+                    <MovieListEntry movieid={item.movieid}/>
+                ))
+            });
+        });
     }
 
     render()
