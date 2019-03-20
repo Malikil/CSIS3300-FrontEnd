@@ -31,7 +31,7 @@ class MoviePage extends React.Component
                 genre: data.genres
             });
         });
-        fetch(`http://localhost:1337/get_schedule/${this.state.movieid}`)
+        fetch(`http://localhost:1337/get_schedule/movie/${this.state.movieid}`)
         .then(response => response.json())
         .then(data => {
             this.setState({
