@@ -11,36 +11,49 @@ class MoviePage extends React.Component
             title: "Title placeholder",
             description: "Description placeholder",
             rating: "RtgPH",
-            genre: ["Genre1", "Genre2"]
+            genre: ["Genre1", "Genre2"],
+            showtimes: []
         }
     }
     componentDidMount()
     {
         // Fetch goes here
+        fetch(`http://localhost:1337/get_movie/${this.state.movieid}`)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                title: data.title,
+                description: data.description,
+                rating: data.rating,
+                genre: data.genres
+            });
+        });
     }
 
     render()
     {
-        return <div class="movieBase">
+        return <div className="movieBase">
             <h2>{this.state.title}</h2>
             <table>
-                <tr>
-                    <td class="descCol">
-                        <p>
-                            <b>Description:</b><br />
-                            {this.state.description}
-                        </p>
-                        <p>
-                            Genres: {this.state.genre.map((item, index) => (
-                                index > 0 ? `, ${item}` : item
-                            ))}<br />
-                            Rating: {this.state.rating}
-                        </p>
-                    </td>
-                    <td class="showtimes">
-                        List of showtimes
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td className="descCol" valign="top">
+                            <p>
+                                <b>Description:</b><br />
+                                {this.state.description}
+                            </p>
+                            <p>
+                                Genre: {this.state.genre.map((item, index) => (
+                                    index > 0 ? `, ${item}` : item
+                                ))}<br />
+                                Rating: {this.state.rating}
+                            </p>
+                        </td>
+                        <td className="showtimes" valign="top">
+                            List of showtimes
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>;
     }

@@ -1,8 +1,10 @@
-div.movieBase {
-    display: inline-block;
-    text-align: initial;
-    max-width: 1024px;
-    margin: 0 auto;
+h2 {
+    text-align: center;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1em;
 }
 
 table {
@@ -11,6 +13,7 @@ table {
 
 td.descCol {
     width: 25%;
+    border: 1px solid black;
 }
 
 td.showtimes {
