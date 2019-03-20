@@ -28,7 +28,7 @@ class MoviePage extends React.Component
                 title: data.title,
                 description: data.description,
                 rating: data.rating,
-                genre: data.genres
+                genre: data.genre
             });
         });
         fetch(`http://localhost:1337/get_schedule/movie/${this.state.movieid}`)
@@ -60,9 +60,9 @@ class MoviePage extends React.Component
                             </p>
                         </td>
                         <td className="showtimes" valign="top">
-                            {this.state.showtimes.map((item, index) => (
+                            {this.state.showtimes.map(item => 
                                 <ScheduleListItem schedule={item} />
-                            ))}
+                            )}
                         </td>
                     </tr>
                 </tbody>

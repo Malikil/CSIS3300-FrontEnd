@@ -12,10 +12,11 @@ table {
 }
 
 td.descCol {
-    width: 25%;
+    width: 33%;
     border: 1px solid black;
+    padding: 1ex;
 }
 
 td.showtimes {
-    width: 75%;
+    width: 66%;
 }
