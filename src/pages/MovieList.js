@@ -3,18 +3,33 @@ import MovieListEntry from '../components/MovieListEntry';
 
 class MovieList extends React.Component
 {
-    constructor(props)
+    constructor({ match })
     {
-        super(props);
+        super();
         this.state = {
-           movies: []
+            searchType: match.params.searchType,
+            search: match.params.search,
+            movies: []
         }
     }
+    componentDidMount()
+    {
+        // Fetch goes here
+        
+        fetch(`http://localhost:1337/get_${this.state.searchType}/${this.state.search}`)
+        .then(response => response.json())
+        .then(data => {
+           this.setState({
+                movies: data
+            });
+        });
+    }
+
     render()
     {
         return <div>
             {this.state.movies.map((item, index) => (
-                <MovieListEntry movieid={item.movieid}/>
+                <MovieListEntry movie={item}/>
             ))}
         </div>;    
     }

@@ -1,16 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoviePage from './pages/MoviePage';
+import MovieList from './pages/MovieList';
 
 function Home() {
   return <h2>Movie Theatre</h2>;
-}
-
-function MovieSearch({ match }) {
-  if (isNaN(match.params.search))
-    return <h2>NaN: {match.params.search}</h2>
-  else
-    return <MoviePage id={match.params.search} />;
 }
 
 class App extends React.Component {
@@ -19,7 +13,8 @@ class App extends React.Component {
       <Router>
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/movies/:search" component={MovieSearch} />
+            <Route path="/movies/:searchType/:search" component={MovieList} />
+            <Route path="/movies/:search" component={MoviePage} />
           </Switch>
       </Router>
     );
