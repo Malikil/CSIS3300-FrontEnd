@@ -1,4 +1,5 @@
 import React from 'react';
+import './MovieListEntry.css';
 
 class MovieListEntry extends React.Component
 {
@@ -14,19 +15,17 @@ class MovieListEntry extends React.Component
     }
     render()
     {
-        return <table>
+        return <table className = "movieListEntry">
             <tbody>
             <tr>
-                <td>Title: {this.state.title}</td> 
-            </tr>
-            <tr>
+                <td className="title">Title: {this.state.title}</td> 
                 <td>Rating: {this.state.rating}</td>
             </tr>
             <tr>
-                <td>Genres: {this.state.genre.map((item, index) => (index > 0? `, ${item}` : item))}</td>
+                <td colSpan = "2">Genres: {this.state.genre.map((item, index) => (index > 0? `, ${item}` : item))}</td>
             </tr>
             <tr>
-                <td>
+                <td colSpan = "2">
                     Description: <br/> 
                     {this.state.description}
                 </td>
