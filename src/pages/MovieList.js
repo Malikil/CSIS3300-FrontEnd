@@ -29,7 +29,7 @@ class MovieList extends React.Component
     {
         return <div>
             {this.state.movies.map((item, index) => (
-                <MovieListEntry movie={item}/>
+                <MovieListEntry key={item.movieid} movie={item}/>
             ))}
         </div>;    
     }
