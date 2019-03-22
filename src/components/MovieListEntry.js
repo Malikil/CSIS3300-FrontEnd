@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './MovieListEntry.css';
 
 class MovieListEntry extends React.Component
@@ -7,6 +8,7 @@ class MovieListEntry extends React.Component
     {
         super(props);
         this.state = {
+            movieid: props.movie.movieid,
             title: props.movie.title,
             description: props.movie.description,
             rating: props.movie.rating,
@@ -18,7 +20,7 @@ class MovieListEntry extends React.Component
         return <table className = "movieListEntry">
             <tbody>
             <tr>
-                <td className="title">Title: {this.state.title}</td> 
+                <td className="title">Title: <Link to = {`/movie/${this.state.movieid}`}>{this.state.title}</Link></td> 
                 <td>Rating: {this.state.rating}</td>
             </tr>
             <tr>
