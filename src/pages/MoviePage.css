@@ -1,4 +1,22 @@
-div {
+h2 {
     text-align: center;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+table {
     width: 100%;
+}
+
+td.descCol {
+    width: 33%;
+    border: 1px solid black;
+    padding: 1ex;
+}
+
+td.showtimes {
+    width: 66%;
 }
