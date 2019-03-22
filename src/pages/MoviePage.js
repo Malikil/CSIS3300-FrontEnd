@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ScheduleListItem from "../components/ScheduleListItem";
 
 class MoviePage extends React.Component
@@ -51,10 +52,17 @@ class MoviePage extends React.Component
                                 {this.state.description}
                             </p>
                             <p>
-                                Genre: {this.state.genre.map((item, index) => (
-                                    index > 0 ? `, ${item}` : item
-                                ))}<br />
-                                Rating: {this.state.rating}
+                                Genre: {this.state.genre.map((item, index) =>
+                                    <span>
+                                        {index > 0 ? `, ` : ""}
+                                        <Link to={`/movie/genre/${item}`}>
+                                            {item}
+                                        </Link>
+                                    </span>
+                                )}<br />
+                                Rating: <Link to={`/movie/rating/${this.state.rating}`}>
+                                    {this.state.rating}
+                                </Link>
                             </p>
                         </td>
                         <td className="showtimes" valign="top">
