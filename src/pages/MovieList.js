@@ -3,12 +3,12 @@ import MovieListEntry from '../components/MovieListEntry';
 
 class MovieList extends React.Component
 {
-    constructor({ match })
+    constructor(props)
     {
-        super();
+        super(props);
         this.state = {
-            searchType: match.params.searchType,
-            search: match.params.search,
+            searchType: props.match.params.searchType,
+            search: props.match.params.search,
             movies: []
         }
     }
@@ -28,10 +28,10 @@ class MovieList extends React.Component
     render()
     {
         return <div>
-            {this.state.movies.map((item, index) => (
+            {this.state.movies.map(item => (
                 <MovieListEntry key={item.movieid} movie={item}/>
             ))}
-        </div>;    
+        </div>;
     }
 }
 export default MovieList;

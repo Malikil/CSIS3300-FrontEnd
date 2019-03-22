@@ -4,12 +4,11 @@ import ScheduleListItem from "../components/ScheduleListItem";
 
 class MoviePage extends React.Component
 {
-    constructor({ match })
+    constructor(props)
     {
-        super();
-        console.log(match.params.mid);
+        super(props);
         this.state = {
-            movieid: match.params.mid,
+            movieid: props.match.params.mid,
             title: "",
             description: "",
             rating: "",
@@ -61,7 +60,7 @@ class MoviePage extends React.Component
                         </td>
                         <td className="showtimes" valign="top">
                             {this.state.showtimes.map(item => 
-                                <ScheduleListItem schedule={item} />
+                                <ScheduleListItem key={item.scheduleid} schedule={item} />
                             )}
                         </td>
                     </tr>
