@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './MovieListEntry.css';
 
 class MovieListEntry extends React.Component
 {

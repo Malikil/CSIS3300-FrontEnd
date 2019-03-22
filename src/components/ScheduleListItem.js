@@ -1,5 +1,4 @@
 import React from 'react';
-import "./ScheduleListItem.css";
 
 class ScheduleListItem extends React.Component
 {

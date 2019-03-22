@@ -1,5 +1,4 @@
 import React from 'react';
-import './MoviePage.css';
 import ScheduleListItem from "../components/ScheduleListItem";
 
 class MoviePage extends React.Component
