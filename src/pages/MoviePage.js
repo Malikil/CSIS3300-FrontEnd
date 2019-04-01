@@ -1,15 +1,14 @@
 import React from 'react';
-import './MoviePage.css';
+import { Link } from 'react-router-dom';
 import ScheduleListItem from "../components/ScheduleListItem";
 
 class MoviePage extends React.Component
 {
-    constructor({ match })
+    constructor(props)
     {
-        super();
-        console.log(match.params.mid);
+        super(props);
         this.state = {
-            movieid: match.params.mid,
+            movieid: props.match.params.mid,
             title: "",
             description: "",
             rating: "",
@@ -53,15 +52,22 @@ class MoviePage extends React.Component
                                 {this.state.description}
                             </p>
                             <p>
-                                Genre: {this.state.genre.map((item, index) => (
-                                    index > 0 ? `, ${item}` : item
-                                ))}<br />
-                                Rating: {this.state.rating}
+                                Genre: {this.state.genre.map((item, index) =>
+                                    <span>
+                                        {index > 0 ? `, ` : ""}
+                                        <Link to={`/movie/genre/${item}`}>
+                                            {item}
+                                        </Link>
+                                    </span>
+                                )}<br />
+                                Rating: <Link to={`/movie/rating/${this.state.rating}`}>
+                                    {this.state.rating}
+                                </Link>
                             </p>
                         </td>
                         <td className="showtimes" valign="top">
                             {this.state.showtimes.map(item => 
-                                <ScheduleListItem schedule={item} />
+                                <ScheduleListItem key={item.scheduleid} schedule={item} />
                             )}
                         </td>
                     </tr>
