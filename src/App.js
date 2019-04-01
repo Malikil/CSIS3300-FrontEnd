@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoviePage from './pages/MoviePage';
 import MovieList from './pages/MovieList';
+import Navbar from './components/Navbar';
 import "./App.css";
 
 function Home() {
@@ -10,7 +11,8 @@ function Home() {
 
 class App extends React.Component {
   render() {
-    return (
+    return <div>
+      <Navbar />
       <Router>
             <Switch>
               <Route path="/" exact component={Home} />
@@ -19,7 +21,7 @@ class App extends React.Component {
               <Route component={Home} />
             </Switch>
       </Router>
-    );
+    </div>;
   }
 }
 

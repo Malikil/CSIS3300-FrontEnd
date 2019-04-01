@@ -13,6 +13,14 @@ h2 {
   text-align: center;
 }
 
+.lalign {
+  text-align: left;
+}
+
+.ralign {
+  text-align: right;
+}
+
 p {
   margin-top: 0;
   margin-bottom: 1em;
