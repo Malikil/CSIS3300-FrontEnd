@@ -15,7 +15,7 @@ class MovieListEntry extends React.Component
                 {this.props.movie.rating}</Link></td>
             </tr>
             <tr>
-                <td colSpan = "2">Genres: {this.props.genre.map((item, index) =>
+                <td colSpan = "2">Genres: {this.props.movie.genre.map((item, index) =>
                                     <span>
                                         {index > 0 ? `, ` : ""}
                                         <Link to={`/movie/genre/${item}`}>
