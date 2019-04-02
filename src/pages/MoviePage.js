@@ -53,7 +53,7 @@ class MoviePage extends React.Component
                             </p>
                             <p>
                                 Genre: {this.state.genre.map((item, index) =>
-                                    <span>
+                                    <span key={item}>
                                         {index > 0 ? `, ` : ""}
                                         <Link to={`/movie/genre/${item}`}>
                                             {item}

@@ -6,17 +6,15 @@ class MovieList extends React.Component
     constructor(props)
     {
         super(props);
+        this.getMovieInfo = this.getMovieInfo.bind(this);
         this.state = {
-            searchType: props.match.params.searchType,
-            search: props.match.params.search,
             movies: []
         }
     }
-    componentDidMount()
+
+    getMovieInfo(type, search)
     {
-        // Fetch goes here
-        
-        fetch(`http://localhost:1337/get_${this.state.searchType}/${this.state.search}`)
+        fetch(`http://localhost:1337/search_${type}/${search}`)
         .then(response => response.json())
         .then(data => {
            this.setState({
@@ -25,11 +23,28 @@ class MovieList extends React.Component
         });
     }
 
+    componentWillReceiveProps(newProps)
+    {
+        this.getMovieInfo(
+            newProps.match.params.searchType,
+            newProps.match.params.search
+        );
+    }
+
+    componentDidMount()
+    {
+        // Fetch goes here
+        this.getMovieInfo(
+            this.props.match.params.searchType,
+            this.props.match.params.search
+        );
+    }
+
     render()
     {
         return <div>
             {this.state.movies.map(item => (
-                <MovieListEntry key={item.movieid} movie={item}/>
+                <MovieListEntry key={item.movieid} movie={item} redir={this.getMovieInfo}/>
             ))}
         </div>;
     }

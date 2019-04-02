@@ -2,6 +2,19 @@ import React from 'react';
 
 class Navbar extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            loggedin: false
+        };
+    }
+
+    checkLogin()
+    {
+        
+    }
+
     render()
     {
         return <table className="navbar">

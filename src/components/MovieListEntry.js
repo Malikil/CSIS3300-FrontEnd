@@ -11,12 +11,18 @@ class MovieListEntry extends React.Component
                 <td className="title">Title: <Link to = {`/movie/${this.props.movie.movieid}`}>
                     {this.props.movie.title}
                 </Link></td> 
-                <td>Rating: {this.props.movie.rating}</td>
+                <td>Rating: <Link to = {`/movie/rating/${this.props.movie.rating}`}>
+                {this.props.movie.rating}</Link></td>
             </tr>
             <tr>
-                <td colSpan = "2">Genres: {this.props.movie.genre.map((item, index) => (
-                    index > 0? `, ${item}` : item
-                ))}</td>
+                <td colSpan = "2">Genres: {this.props.movie.genre.map((item, index) =>
+                                    <span key={item}>
+                                        {index > 0 ? `, ` : ""}
+                                        <Link to={`/movie/genre/${item}`}>
+                                            {item}
+                                        </Link>
+                                    </span>
+                )}</td>
             </tr>
             <tr>
                 <td colSpan = "2">
