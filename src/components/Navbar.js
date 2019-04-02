@@ -19,7 +19,7 @@ class Navbar extends React.Component
         return <table className="navbar">
             <tbody>
                 <tr>
-                    <td className="lalign">Movie Theatre x</td>
+                    <td className="lalign"><Link to={'/'}>Movie Theatre x</Link></td>
                     <td className="ralign">{this.username}</td>
                     <td className="ralign">
                         <Link to={'/loginpage'}>Login</Link>
