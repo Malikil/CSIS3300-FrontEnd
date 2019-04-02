@@ -7,6 +7,14 @@ class Home extends React.Component
         return <div>
             
             <h1>Welcome to Movie Theatre X</h1>
+            <table>
+                <tbody>
+                <tr>
+                    <td><input type="button" value="Search by Title" onClick={() => this.props.history.push("/movie/")} /></td>
+                    <td><input type="button" value="Search by Genre"/></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     }
 }
