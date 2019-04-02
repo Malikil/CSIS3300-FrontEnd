@@ -1,13 +1,21 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 
+
+// https://stackoverflow.com/questions/49819183/react-what-is-the-best-way-to-handle-authenticated-logged-in-state
 class Navbar extends React.Component
 {
     constructor(props)
     {
         super(props);
+        this.login = ()=> {
+            this.setState({
+              isAuthenticated: true
+            });
+          }
         this.state = {
-            loggedin: false
+            isAuthenticated: false,
+            login: this.login
         };
     }
 
@@ -50,6 +58,12 @@ class Navbar extends React.Component
             history.push('/login')
           }
     }
+
+    componentDidMount() {
+        authenticate().then(isAuthenticated => {
+          this.setState({ isAuthenticated })
+        })
+      }
 
     render()
     {
