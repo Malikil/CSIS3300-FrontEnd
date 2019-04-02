@@ -10,8 +10,8 @@ class Home extends React.Component
             <table>
                 <tbody>
                 <tr>
-                    <td><input type="button" value="Search by Title" onClick={() => this.props.history.push("/movie/")} /></td>
-                    <td><input type="button" value="Search by Genre"/></td>
+                    <td><input type="button" value="Search by Title" onClick={() => this.props.history.push("/search/title/")} /></td>
+                    <td><input type="button" value="Search by Genre" onClick={() => this.props.history.push("/search/genre/")}/></td>
                 </tr>
                 </tbody>
             </table>
