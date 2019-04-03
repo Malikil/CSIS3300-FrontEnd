@@ -11,43 +11,9 @@ function Home() {
 
 class App extends React.Component
 {
-  constructor(props)
-  {
-    super(props);
-
-    this.state = {
-      loggedInId: null,
-      username: "",
-      password: ""
-    };
-  }
-
-  login(user, pass)
-  {
-    fetch('http://localhost:1337/auth',
-    {
-      method: "GET",
-      headers: {
-        "x-username": user,
-        "x-password": pass
-      }
-    })
-    .then(response => response.json())
-    .then(data => 
-      this.setState({
-        loggedInId: data.userid,
-        username: user,
-        password: pass
-      }));
-  }
-
   render() {
     return <div>
-      <Navbar user={{
-        userid: this.state.loggedInId,
-        username: this.state.username,
-        password: this.state.password
-      }} handlelogin={this.login} />
+      <Navbar />
       <Router>
             <Switch>
               <Route path="/" exact component={Home} />
@@ -60,4 +26,35 @@ class App extends React.Component
   }
 }
 
+const auth = {
+    user: null,
+    login(user, pass)
+    {
+      fetch('http://localhost:1337/auth',
+      {
+        method: "GET",
+        headers: {
+          "x-username": user,
+          "x-password": pass
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.userid)
+          this.user = {
+            loggedInId: data.userid,
+            username: user,
+            password: pass
+          }
+        else
+          logout();
+      });
+    },
+    logout()
+    {
+        this.user = null;
+    }
+}
+
 export default App;
+export { auth };
