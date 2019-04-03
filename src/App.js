@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoviePage from './pages/MoviePage';
 import MovieList from './pages/MovieList';
 import Navbar from './components/Navbar';
+import LoginPage from './components/LoginPage';
 import "./App.css";
 
 function Home() {
@@ -13,14 +14,15 @@ class App extends React.Component
 {
   render() {
     return <div>
-      <Navbar />
       <Router>
-            <Switch>
+          <Navbar />
+          <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/login" exact component={LoginPage} />
               <Route path="/movie/:searchType/:search" component={MovieList} />
               <Route path="/movie/:mid" component={MoviePage} />
               <Route component={Home} />
-            </Switch>
+          </Switch>
       </Router>
     </div>;
   }
@@ -47,7 +49,7 @@ const auth = {
             password: pass
           }
         else
-          logout();
+          this.logout();
       });
     },
     logout()

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { auth } from '../App';
 
 
@@ -9,15 +10,8 @@ class Navbar extends React.Component
     {
         super(props);
         this.state = {
-          user: props.user
+            user: props.user
         };
-    }
-
-    componentWillReceiveProps(newprops)
-    {
-      this.setState({
-        user: newprops.user
-      });
     }
 
     render()
@@ -25,7 +19,7 @@ class Navbar extends React.Component
         return <table className="navbar">
             <tbody>
                 <tr>
-                    <td className="lalign">Movie Theatre x</td>
+                    <td className="lalign"><Link to="/">Movie Theatre x</Link></td>
                     <td className="ralign">{!!auth.user ? auth.user.username : "not logged in"}</td>
                 </tr>
             </tbody>
