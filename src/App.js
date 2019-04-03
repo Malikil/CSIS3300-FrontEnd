@@ -1,17 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './pages/Home';
 import MoviePage from './pages/MoviePage';
 import MovieList from './pages/MovieList';
 import Navbar from './components/Navbar';
 import LoginPage from './components/LoginPage';
 import "./App.css";
 
-function Home() {
-  return <h2>Movie Theatre</h2>;
-}
-
-class App extends React.Component
-{
+class App extends React.Component {
   render() {
     return <div>
       <Router>
