@@ -1,10 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { auth } from '../App';
 
 
 // https://stackoverflow.com/questions/49819183/react-what-is-the-best-way-to-handle-authenticated-logged-in-state
 class Navbar extends React.Component
 {
+    loginButton()
+    {
+        if (!!this.state.user)
+            return <button onClick={auth.logout}>Logout</button>;
+        else
+            return <Link to="/login"><button>Login</button></Link>;
+    }
     constructor(props)
     {
         super(props);
@@ -13,7 +21,7 @@ class Navbar extends React.Component
         };
     }
 
-    login(user, pass)
+    login(user, pass, callback)
     {
       fetch('http://localhost:1337/auth',
       {
@@ -34,8 +42,11 @@ class Navbar extends React.Component
             }
           });
         else
-          logout();
-      });
+          this.setState({
+            user: null
+          });
+        return this.state.user;
+      }).then(callback);
     }
 
     logout()
@@ -50,8 +61,8 @@ class Navbar extends React.Component
         return <table className="navbar">
             <tbody>
                 <tr>
-                    <td className="lalign">Movie Theatre x</td>
-                    <td className="ralign">{!!this.state.user ? this.state.user.username : "not logged in"}</td>
+                    <td className="lalign"><Link to="/">Movie Theatre x</Link></td>
+                    <td className="ralign">{`${this.state.user.username}`} {this.loginButton()}</td>
                 </tr>
             </tbody>
         </table>;

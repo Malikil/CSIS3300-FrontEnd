@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import ScheduleListItem from "../components/ScheduleListItem";
+import MovieList from './MovieList';
 
 class MoviePage extends React.Component
 {
@@ -41,39 +42,42 @@ class MoviePage extends React.Component
 
     render()
     {
-        return <div className="movieBase">
-            <h2>{this.state.title}</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td className="descCol" valign="top">
-                            <p>
-                                <b>Description:</b><br />
-                                {this.state.description}
-                            </p>
-                            <p>
-                                Genre: {this.state.genre.map((item, index) =>
-                                    <span key={item}>
-                                        {index > 0 ? `, ` : ""}
-                                        <Link to={`/movie/genre/${item}`}>
-                                            {item}
-                                        </Link>
-                                    </span>
-                                )}<br />
-                                Rating: <Link to={`/movie/rating/${this.state.rating}`}>
-                                    {this.state.rating}
-                                </Link>
-                            </p>
-                        </td>
-                        <td className="showtimes" valign="top">
-                            {this.state.showtimes.map(item => 
-                                <ScheduleListItem key={item.scheduleid} schedule={item} />
-                            )}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>;
+        if (["title", "genre", "rating"].includes(this.state.movieid))
+            return <Route component={MovieList} />;
+        else
+            return <div className="movieBase">
+                <h2>{this.state.title}</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td className="descCol" valign="top">
+                                <p>
+                                    <b>Description:</b><br />
+                                    {this.state.description}
+                                </p>
+                                <p>
+                                    Genre: {this.state.genre.map((item, index) =>
+                                        <span key={item}>
+                                            {index > 0 ? `, ` : ""}
+                                            <Link to={`/movie/genre/${item}`}>
+                                                {item}
+                                            </Link>
+                                        </span>
+                                    )}<br />
+                                    Rating: <Link to={`/movie/rating/${this.state.rating}`}>
+                                        {this.state.rating}
+                                    </Link>
+                                </p>
+                            </td>
+                            <td className="showtimes" valign="top">
+                                {this.state.showtimes.map(item => 
+                                    <ScheduleListItem key={item.scheduleid} schedule={item} />
+                                )}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>;
     }
 }
 
