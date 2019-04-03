@@ -1,6 +1,6 @@
 import React from 'react';
 import TicketList from '../pages/TicketList';
-import { api } from '../App';
+import  api  from '../api';
 
 class UserPage extends React.Component
 {

@@ -27,10 +27,7 @@ class App extends React.Component {
 }
 
 const nav = <Navbar />;
-const api = "http://35.247.73.56:1337";
-
 export default App;
 export {
-  nav,
-  api
+  nav
 };
