@@ -26,7 +26,6 @@ class LoginPage extends React.Component
     }
     render()
     {
-        var user = JSON.parse(localStorage.getItem("username"));
         return <div>
             <table className="loginpage">
                 <tbody>
