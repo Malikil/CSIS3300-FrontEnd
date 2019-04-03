@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieListEntry from '../components/MovieListEntry';
+import { api } from '../App';
 
 class MovieList extends React.Component
 {
@@ -15,8 +16,8 @@ class MovieList extends React.Component
     getMovieInfo(type, search)
     {
         ((!!!type || !!!search) ? 
-        fetch('http://localhost:1337/search_all') :
-        fetch(`http://localhost:1337/search_${type}/${search}`))
+        fetch(`${api}/search_all`) :
+        fetch(`${api}/search_${type}/${search}`))
         .then(response => response.json())
         .then(data => {
            this.setState({
