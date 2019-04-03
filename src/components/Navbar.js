@@ -9,15 +9,40 @@ class Navbar extends React.Component
     {
         super(props);
         this.state = {
-          user: props.user
+          user: null
         };
     }
 
-    componentWillReceiveProps(newprops)
+    login(user, pass)
     {
-      this.setState({
-        user: newprops.user
+      fetch('http://localhost:1337/auth',
+      {
+        method: "GET",
+        headers: {
+          "x-username": user,
+          "x-password": pass
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.userid)
+          this.setState({
+            user: {
+            loggedInId: data.userid,
+            username: user,
+            password: pass
+            }
+          });
+        else
+          logout();
       });
+    }
+
+    logout()
+    {
+        this.setState({
+          user: null
+        });
     }
 
     render()
@@ -26,7 +51,7 @@ class Navbar extends React.Component
             <tbody>
                 <tr>
                     <td className="lalign">Movie Theatre x</td>
-                    <td className="ralign">{!!auth.user ? auth.user.username : "not logged in"}</td>
+                    <td className="ralign">{!!this.state.user ? this.state.user.username : "not logged in"}</td>
                 </tr>
             </tbody>
         </table>;

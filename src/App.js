@@ -13,7 +13,7 @@ class App extends React.Component
 {
   render() {
     return <div>
-      <Navbar />
+      {nav}
       <Router>
             <Switch>
               <Route path="/" exact component={Home} />
@@ -26,35 +26,9 @@ class App extends React.Component
   }
 }
 
-const auth = {
-    user: null,
-    login(user, pass)
-    {
-      fetch('http://localhost:1337/auth',
-      {
-        method: "GET",
-        headers: {
-          "x-username": user,
-          "x-password": pass
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.userid)
-          this.user = {
-            loggedInId: data.userid,
-            username: user,
-            password: pass
-          }
-        else
-          logout();
-      });
-    },
-    logout()
-    {
-        this.user = null;
-    }
-}
+const nav = <Navbar />;
 
 export default App;
-export { auth };
+export {
+  nav
+};
