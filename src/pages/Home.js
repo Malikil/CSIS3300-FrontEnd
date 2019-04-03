@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { api } from '../App';
 
 const searchName = {
     textAlign: "right",
@@ -35,7 +36,7 @@ class Home extends React.Component
 
     componentWillMount()
     {
-        fetch("http://localhost:1337/get_genres")
+        fetch(`${api}/get_genres`)
         .then(response => response.json())
         .then(data =>
             this.setState({
@@ -43,7 +44,7 @@ class Home extends React.Component
                 genre: data[0].genre
             }));
         
-        fetch("http://localhost:1337/get_ratings")
+        fetch(`${api}/get_ratings`)
         .then(response => response.json())
         .then(data =>
             this.setState({

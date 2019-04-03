@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { api } from '../App';
 
 class Navbar extends React.Component
 {
@@ -20,7 +21,7 @@ class Navbar extends React.Component
 
     login(user, pass, callback)
     {
-      fetch('http://localhost:1337/auth',
+      fetch(`${api}/auth`,
       {
         method: "GET",
         headers: {
