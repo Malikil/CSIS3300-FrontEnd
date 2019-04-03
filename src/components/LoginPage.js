@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { auth } from '../App';
+import { nav } from '../App';
 
 class LoginPage extends React.Component
 {
@@ -16,7 +16,7 @@ class LoginPage extends React.Component
 
     login()
     {
-        auth.login(this.state.username, this.state.password, (userobj) => {
+        nav.login(this.state.username, this.state.password, (userobj) => {
             if (!!userobj)
                 this.setState({
                     redirectToReferrer: false
