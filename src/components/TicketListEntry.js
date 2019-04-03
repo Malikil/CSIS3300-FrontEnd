@@ -18,13 +18,16 @@ class TicketListEntry extends React.Component
                 <td>Seat: {this.props.ticket.seat}</td>
             </tr>
             <tr>
+                <td>Auditorium: {this.props.ticket.autiorium}</td>
+            </tr>
+            <tr>
                 <td>
                     Show Time: <br/> 
                     {this.props.ticket.showtime}
                 </td>
             </tr>
             <tr>
-                <td>Price: ${this.props.ticket.price}</td>
+                <td>Ticket Price: ${this.props.ticket.ticketprice}</td>
             </tr>
             </tbody>
         </table>;
