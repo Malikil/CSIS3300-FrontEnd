@@ -16,7 +16,9 @@ class App extends React.Component
     super(props);
 
     this.state = {
-      loggedInAs: null
+      loggedInId: null,
+      username: "",
+      password: ""
     };
   }
 
@@ -33,13 +35,19 @@ class App extends React.Component
     .then(response => response.json())
     .then(data => 
       this.setState({
-        loggedInAs: data.userid
+        loggedInId: data.userid,
+        username: user,
+        password: pass
       }));
   }
 
   render() {
     return <div>
-      <Navbar />
+      <Navbar user={{
+        userid: this.state.loggedInId,
+        username: this.state.username,
+        password: this.state.password
+      }} handlelogin={this.login} />
       <Router>
             <Switch>
               <Route path="/" exact component={Home} />
