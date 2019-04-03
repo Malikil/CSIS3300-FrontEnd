@@ -14,13 +14,21 @@ class Navbar extends React.Component
         };
     }
 
+    loginButton()
+    {
+        if (!!auth.user)
+            return <button onClick={auth.logout}>Logout</button>;
+        else
+            return <Link to="/login"><button>Login</button></Link>;
+    }
+
     render()
     {
         return <table className="navbar">
             <tbody>
                 <tr>
                     <td className="lalign"><Link to="/">Movie Theatre x</Link></td>
-                    <td className="ralign">{!!auth.user ? auth.user.username : "not logged in"}</td>
+                    <td className="ralign">{!!auth.user ? auth.user.username : "guest"} {this.loginButton()}</td>
                 </tr>
             </tbody>
         </table>;

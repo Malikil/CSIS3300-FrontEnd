@@ -5,7 +5,7 @@ class LoginPage extends React.Component
     render()
     {
         return <div>
-            <table className="loginpage">
+            <table className="contentFit">
                 <tbody>
                     <tr>
                         <th colSpan="2">Login</th>
