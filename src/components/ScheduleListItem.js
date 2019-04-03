@@ -22,6 +22,11 @@ class ScheduleListItem extends React.Component
                         }
                     )}</td>
                 </tr>
+                <tr>
+                    <td>
+                        Seats Available:
+                    </td>
+                </tr>
             </tbody>
         </table>;
     }
