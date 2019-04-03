@@ -26,7 +26,7 @@ class App extends React.Component {
 
 const auth = {
     user: null,
-    login(user, pass)
+    login(user, pass, callback)
     {
       fetch('http://localhost:1337/auth',
       {
@@ -38,19 +38,21 @@ const auth = {
       })
       .then(response => response.json())
       .then(data => {
-        if (data.userid)
+        if (!!data.userid)
           this.user = {
             loggedInId: data.userid,
             username: user,
             password: pass
           }
         else
-          this.logout();
-      });
+          this.user = null;
+        return this.user;
+      }).then(callback);
     },
-    logout()
+    logout(callback)
     {
         this.user = null;
+        callback(false);
     }
 }
 
