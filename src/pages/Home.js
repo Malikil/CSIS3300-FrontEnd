@@ -39,14 +39,16 @@ class Home extends React.Component
         .then(response => response.json())
         .then(data =>
             this.setState({
-                genres: data.map(item => item.genre)
+                genres: data.map(item => item.genre),
+                genre: data[0].genre
             }));
         
         fetch("http://localhost:1337/get_ratings")
         .then(response => response.json())
         .then(data =>
             this.setState({
-                ratings: data.map(item => item.rating)
+                ratings: data.map(item => item.rating),
+                rating: data[0].rating
             }));
     }
 

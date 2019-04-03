@@ -14,7 +14,9 @@ class MovieList extends React.Component
 
     getMovieInfo(type, search)
     {
-        fetch(`http://localhost:1337/search_${type}/${search}`)
+        ((!!!type || !!!search) ? 
+        fetch('http://localhost:1337/search_all') :
+        fetch(`http://localhost:1337/search_${type}/${search}`))
         .then(response => response.json())
         .then(data => {
            this.setState({
