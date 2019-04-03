@@ -30,6 +30,10 @@ table {
   width: 100%;
 }
 
+.formInputItem {
+  width: 125px;
+}
+
 .contentFit {
   margin: 0 auto;
   width: auto;

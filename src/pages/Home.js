@@ -18,6 +18,7 @@ class Home extends React.Component
             rating: "",
             genres: [],
             ratings: [],
+            searchType: "title",
             formSubmitted: false
         };
 
@@ -49,62 +50,82 @@ class Home extends React.Component
             }));
     }
 
-    renderRedirect()
+    inputView()
+    {
+        switch (this.state.searchType)
+        {
+            case "title":
+                return <input className="formInputItem" type="text" value={this.state.title} onChange={(e) =>
+                    this.setState({
+                        title: e.target.value
+                    })
+                } />;
+            case "genre":
+                return <select className="formInputItem" value={this.state.genre} onChange={(e) =>
+                    this.setState({
+                        genre: e.target.value
+                    })
+                }>
+                    {this.state.genres.map(item => 
+                        <option key={item} value={item.toLowerCase()}>{item}</option>)}
+                </select>;
+            case "rating":
+                return <select className="formInputItem" value={this.state.rating} onChange={(e) =>
+                    this.setState({
+                        rating: e.target.value
+                    })
+                }>
+                    {this.state.ratings.map(item =>
+                        <option key={item} value={item.toLowerCase()}>{item}</option>)}
+                </select>;
+        }
+    }
+
+    shouldRedirect()
     {
         if (this.state.formSubmitted)
-            return <Redirect to={`/search_title/${this.state.title}`} />;
+        {
+            switch (this.state.searchType)
+            {
+                case "title":
+                    return <Redirect to={`/movie/title/${this.state.title}`} />;
+                case "genre":
+                    return <Redirect to={`/movie/genre/${this.state.genre}`} />;
+                case "rating":
+                    return <Redirect to={`/movie/rating/${this.state.rating}`} />;
+            }
+        }
     }
 
     render()
     {
         return <div>
-            {this.renderRedirect()}
+            {this.shouldRedirect()}
             <h1>Welcome to Movie Theatre X</h1>
             <form onSubmit={this.handleSubmit}>
                 <table className="contentFit">
                     <tbody>
                         <tr>
-                            <td style={searchName}>Title</td>
-                            <td className="lalign">
-                                <input type="text" value={this.state.title} onChange={(e) =>
+                            <td>Search by</td>
+                            <td style={searchName}>
+                                <select value={this.state.searchType} onChange={(e) =>
                                     this.setState({
-                                        title: e.target.value
-                                    })
-                                } />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style={searchName}>Genre</td>
-                            <td className="lalign">
-                                <select name="genre" value={this.state.genre} onChange={(e) =>
-                                    this.setState({
-                                        genre: e.target.value
+                                        searchType: e.target.value
                                     })
                                 }>
-                                    <option>All</option>
-                                    {this.state.genres.map(item => 
-                                        <option key={item} value={item.toLowerCase()}>{item}</option>)}
+                                    <option value="title">Title</option>
+                                    <option value="genre">Genre</option>
+                                    <option value="rating">Rating</option>
                                 </select>
                             </td>
-                        </tr>
-                        <tr>
-                            <td style={searchName}>Rating</td>
-                            <td className="lalign">
-                                <select value={this.state.rating} onChange={(e) =>
-                                    this.setState({
-                                        rating: e.target.value
-                                    })
-                                }>
-                                    <option value="">All</option>
-                                    {this.state.ratings.map(item =>
-                                        <option key={item} value={item.toLowerCase()}>{item}</option>)}
-                                </select>
+                            <td>
+                                {this.inputView()}
                             </td>
                         </tr>
                         <tr style={{
                             marginTop: "1ex"
                         }}>
-                            <td colSpan="2" style={{
+                            <td colSpan="3" style={{
                                 textAlign: "center"
                             }}>
                                 <input type="submit" value="Search"/>
