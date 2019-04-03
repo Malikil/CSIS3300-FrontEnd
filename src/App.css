@@ -5,11 +5,11 @@ body {
 #root {
   display: inline-block;
   text-align: initial;
-  width: 1024px;
   margin: 0 auto;
+  width: 1024px;
 }
 
-h2 {
+h1, h2 {
   text-align: center;
 }
 
@@ -28,6 +28,15 @@ p {
 
 table {
   width: 100%;
+}
+
+.formInputItem {
+  width: 125px;
+}
+
+.contentFit {
+  margin: 0 auto;
+  width: auto;
 }
 
 td.descCol {

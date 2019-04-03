@@ -1,30 +1,35 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './pages/Home';
 import MoviePage from './pages/MoviePage';
 import MovieList from './pages/MovieList';
 import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import "./App.css";
 
-function Home() {
-  return <h2>Movie Theatre</h2>;
-}
-
 class App extends React.Component {
   render() {
-    return <div>      
+    return <div>
       <Router>
-        <Navbar />
-            <Switch>
+          {nav}
+          <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/login" exact component={LoginPage} />
               <Route path="/movie/:searchType/:search" component={MovieList} />
               <Route path="/movie/:mid" component={MoviePage} />
               <Route path="/loginpage" component={LoginPage}/>
               <Route component={Home} />
-            </Switch>
+          </Switch>
       </Router>
     </div>;
   }
 }
 
+const nav = <Navbar />;
+const api = "http://35.247.73.56:1337";
+
 export default App;
+export {
+  nav,
+  api
+};
