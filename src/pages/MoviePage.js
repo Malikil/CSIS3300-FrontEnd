@@ -31,7 +31,6 @@ class MoviePage extends React.Component
                 description: data.description,
                 rating: data.rating,
                 genre: data.genre,
-                seat: data.seat
             });
         });
         fetch(`${api}/get_schedule/movie/${this.state.movieid}`)

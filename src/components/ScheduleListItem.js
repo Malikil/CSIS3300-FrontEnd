@@ -24,8 +24,9 @@ class ScheduleListItem extends React.Component
                 </tr>
                 <tr>
                     <td>
-                        Seats Available:
+                        Seats Available: {this.props.schedule.seats_total - this.props.schedule.seats_taken}
                     </td>
+                    <td><input type="button" value="Purchase"/></td>
                 </tr>
             </tbody>
         </table>;
