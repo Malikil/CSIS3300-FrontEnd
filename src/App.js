@@ -76,19 +76,12 @@ const auth = {
       if (!!data.userid)
         this.user = {
           userid: data.userid,
-          username: user,
-          password: pass
+          username: user
         };
       else
         this.user = null;
       return this.user;
     }).then(callback);
-    /*this.user = {
-      userid: 1,
-      username: "InitUser",
-      password: "InitPass"
-    };
-    setTimeout(() => callback(this.user), 100);*/
   },
   logout(callback) {
     this.user = null;
