@@ -39,7 +39,7 @@ const Navbar = withRouter(
         <tbody>
           <tr>
             <td className="lalign"><Link to="/">Movie Theatre x</Link></td>
-            <td className="ralign">{auth.user.username} <button onClick={() =>
+            <td className="ralign"><Link to={`/user/${auth.user.userid}`}>{auth.user.username}</Link> <button onClick={() =>
                 auth.logout(() => history.push("/"))
               }>Logout</button>
             </td>
