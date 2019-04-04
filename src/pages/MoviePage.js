@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import ScheduleListItem from "../components/ScheduleListItem";
 import MovieList from './MovieList';
+import api from '../api';
 
 class MoviePage extends React.Component
 {
@@ -14,24 +15,26 @@ class MoviePage extends React.Component
             description: "",
             rating: "",
             genre: [],
-            showtimes: []
+            showtimes: [],
+            seats: "",
         }
     }
 
     componentDidMount()
     {
         // Fetch goes here
-        fetch(`http://localhost:1337/get_movie/${this.state.movieid}`)
+        fetch(`${api}/get_movie/${this.state.movieid}`)
         .then(response => response.json())
         .then(data => {
             this.setState({
                 title: data.title,
                 description: data.description,
                 rating: data.rating,
-                genre: data.genre
+                genre: data.genre,
+                seat: data.seat
             });
         });
-        fetch(`http://localhost:1337/get_schedule/movie/${this.state.movieid}`)
+        fetch(`${api}/get_schedule/movie/${this.state.movieid}`)
         .then(response => response.json())
         .then(data => {
             this.setState({

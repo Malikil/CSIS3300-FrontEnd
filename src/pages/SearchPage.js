@@ -1,4 +1,5 @@
 import React from 'react';
+import api from '../api';
 
 class SearchPage extends React.Component
 {
@@ -14,7 +15,7 @@ class SearchPage extends React.Component
     componentDidMount()
     {
         // Fetch goes here        
-        fetch(`http://localhost:1337/get_search/${this.state.searchType}/${this.state.search}`)
+        fetch(`${api}/get_search/${this.state.searchType}/${this.state.search}`)
         .then(response => response.json())
         .then(data => {
            this.setState({
