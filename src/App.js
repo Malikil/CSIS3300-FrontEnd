@@ -4,7 +4,8 @@ import Home from './pages/Home';
 import MoviePage from './pages/MoviePage';
 import MovieList from './pages/MovieList';
 import Navbar from './components/Navbar';
-import LoginPage from './components/LoginPage';
+import LoginPage from './pages/LoginPage';
+import UserPage from './pages/UserPage';
 import "./App.css";
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
               <Route path="/login" exact component={LoginPage} />
               <Route path="/movie/:searchType/:search" component={MovieList} />
               <Route path="/movie/:mid" component={MoviePage} />
+              <Route path="/user/:uid" component={UserPage}/>
               <Route component={Home} />
           </Switch>
       </Router>
@@ -25,10 +27,7 @@ class App extends React.Component {
 }
 
 const nav = <Navbar />;
-const api = "http://35.247.73.56:1337";
-
 export default App;
 export {
-  nav,
-  api
+  nav
 };

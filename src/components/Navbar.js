@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { api } from '../App';
+import api  from '../api';
 
 class Navbar extends React.Component
 {
@@ -56,6 +56,7 @@ class Navbar extends React.Component
 
     render()
     {
+        console.log(this.state.username);
         return <table className="navbar">
             <tbody>
                 <tr>
@@ -63,7 +64,7 @@ class Navbar extends React.Component
                     <td className="ralign">{!!this.state.user ? this.state.user.username : "guest"} {this.loginButton()}</td>
                 </tr>
             </tbody>
-        </table>;
+        </table>
     }
 }
 
