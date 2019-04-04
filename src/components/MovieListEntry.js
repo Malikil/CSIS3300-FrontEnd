@@ -29,8 +29,7 @@ class MovieListEntry extends React.Component
                     Description: <br/> 
                     {this.props.movie.description}
                 </td>
-            </tr>
-            </tbody>
+            </tr></tbody>
         </table>;
     }
 }
