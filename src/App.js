@@ -23,6 +23,7 @@ class App extends React.Component {
               <Route path="/" exact component={Home} />
               <Route path="/login" exact component={LoginPage} />
               <Route path="/movie/:searchType/:search" component={MovieList} />
+              <Route path="/movie/title/" exact component={MovieList} />
               <Route path="/movie/:mid" component={MoviePage} />
               <Route path="/user/:uid" component={UserPage}/>
               <Route component={Home} />
