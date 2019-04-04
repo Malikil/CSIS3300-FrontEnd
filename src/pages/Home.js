@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { api } from '../App';
+import  api  from '../api';
 
 const searchName = {
     textAlign: "right",

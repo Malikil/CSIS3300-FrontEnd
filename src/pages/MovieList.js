@@ -1,6 +1,6 @@
 import React from 'react';
 import MovieListEntry from '../components/MovieListEntry';
-import { api } from '../App';
+import api from '../api';
 
 class MovieList extends React.Component
 {

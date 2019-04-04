@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import ScheduleListItem from "../components/ScheduleListItem";
 import MovieList from './MovieList';
-import { api } from '../App';
+import api from '../api';
 
 class MoviePage extends React.Component
 {
@@ -15,7 +15,8 @@ class MoviePage extends React.Component
             description: "",
             rating: "",
             genre: [],
-            showtimes: []
+            showtimes: [],
+            seats: "",
         }
     }
 
@@ -29,7 +30,7 @@ class MoviePage extends React.Component
                 title: data.title,
                 description: data.description,
                 rating: data.rating,
-                genre: data.genre
+                genre: data.genre,
             });
         });
         fetch(`${api}/get_schedule/movie/${this.state.movieid}`)
