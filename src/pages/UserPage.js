@@ -19,6 +19,7 @@ class UserPage extends React.Component
         fetch(`${api}/get_tickets/past/${this.state.uid}`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             this.setState({
                 history:data
             });
@@ -30,6 +31,8 @@ class UserPage extends React.Component
                 upcoming:data
             });
         });
+
+        
     }
 
     render()
@@ -41,8 +44,8 @@ class UserPage extends React.Component
                     <th>Upcoming</th>
                 </tr>
                 <tr>
-                    <td><TicketList list = {this.state.history}/></td> 
-                    <td><TicketList list = {this.state.upcoming}/></td>
+                    <td><TicketList tickets = {this.state.history}/></td> 
+                    <td><TicketList tickets = {this.state.upcoming}/></td>
                 </tr>
                 
             </tbody>

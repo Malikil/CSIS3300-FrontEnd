@@ -8,12 +8,12 @@ class TicketListEntry extends React.Component
         return <table className = "movieListEntry">
             <tbody>
             <tr>
-                <td className="title">Title: <Link to = {`/movie/${this.props.movie.movieid}`}>
+                <td className="title">Title: <Link to = {`/movie/${this.props.ticket.movieid}`}>
                     {this.props.ticket.title}
                 </Link></td> 
             </tr>
             <tr>
-                <td>Rating: <Link to = {`/movie/rating/${this.props.movie.rating}`}>
+                <td>Rating: <Link to = {`/movie/rating/${this.props.ticket.rating}`}>
                 {this.props.ticket.rating}</Link></td>
                 <td>Seat: {this.props.ticket.seat}</td>
             </tr>
