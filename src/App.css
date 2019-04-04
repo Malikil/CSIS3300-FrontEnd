@@ -49,6 +49,10 @@ td.showtimes {
   width: 66%;
 }
 
+td.half {
+  width: 50%;
+}
+
 .scheduleListItem {
   border: 1px solid black;
   margin-bottom: 3px;

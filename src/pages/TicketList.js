@@ -8,30 +8,26 @@ class TicketList extends React.Component
     {
         super(props);
         this.state = {
-            tickets: props.tickets
+            uid: props.userid,
+            timeframe: props.time,
+            tickets: []
         };
-        
+        console.log(this.state.timeframe);
     }
-    getTicketInfo(type, ticket)
+
+    componentDidMount()
     {
-        ((!!!type || !!!ticket) ? 
-        fetch(`${api}/get_tickets/past`):
-        fetch(`${api}/get_tickets/future`))
+        let uri = `${api}/get_tickets/${this.state.timeframe}/${this.state.uid}`;
+        console.log(`from: ${uri}`);
+        fetch(uri)
         .then(response => response.json())
         .then(data => {
-           this.setState({
+            this.setState({
                 tickets: data
             });
         });
     }
-    componentWillMount()
-    {
-        this.getTicketInfo(
-            this.props.type,
-            this.props.ticket
-        );
-    }
-
+    
     render()
     {
         return <div>

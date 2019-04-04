@@ -14,25 +14,16 @@ class UserPage extends React.Component
         }
     }
 
-    componentWillMount()
+    componentDidMount()
     {
-        fetch(`${api}/get_tickets/past/${this.state.uid}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            this.setState({
-                history:data
-            });
-        });
+        
         fetch(`${api}/get_tickets/future/${this.state.uid}`)
         .then(response => response.json())
         .then(data => {
             this.setState({
                 upcoming:data
             });
-        });
-
-        
+        });        
     }
 
     render()
@@ -44,8 +35,8 @@ class UserPage extends React.Component
                     <th>Upcoming</th>
                 </tr>
                 <tr>
-                    <td><TicketList tickets = {this.state.history}/></td> 
-                    <td><TicketList tickets = {this.state.upcoming}/></td>
+                    <td className="half" valign="top"><TicketList time="past" userid={this.state.uid} /></td> 
+                    <td className="half" valign="top"><TicketList time="future" userid={this.state.uid} /></td>
                 </tr>
                 
             </tbody>

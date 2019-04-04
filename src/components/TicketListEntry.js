@@ -8,22 +8,28 @@ class TicketListEntry extends React.Component
         return <table className = "movieListEntry">
             <tbody>
             <tr>
-                <td className="title">Title: <Link to = {`/movie/${this.props.ticket.movieid}`}>
+                <td colSpan="3" className="title">Title: <Link to = {`/movie/${this.props.ticket.movieid}`}>
                     {this.props.ticket.title}
                 </Link></td> 
             </tr>
             <tr>
                 <td>Rating: <Link to = {`/movie/rating/${this.props.ticket.rating}`}>
                 {this.props.ticket.rating}</Link></td>
+                <td>Auditorium: {this.props.ticket.auditorium}</td>
                 <td>Seat: {this.props.ticket.seat}</td>
             </tr>
             <tr>
-                <td>Auditorium: {this.props.ticket.autiorium}</td>
-            </tr>
-            <tr>
                 <td>
-                    Show Time: <br/> 
-                    {this.props.ticket.showtime}
+                    Show Time: {new Date(this.props.ticket.showtime).toLocaleString(
+                        "en-US",
+                        {
+                            weekday: "short",
+                            month: "long",
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "2-digit"
+                        }
+                    )}
                 </td>
             </tr>
             <tr>
