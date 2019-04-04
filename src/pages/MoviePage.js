@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import ScheduleListItem from "../components/ScheduleListItem";
 import MovieList from './MovieList';
-import { api } from '../App';
+import api from '../api';
 
 class MoviePage extends React.Component
 {
