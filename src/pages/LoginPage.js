@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { auth } from '../App';
+import api from '../api';
 
 class LoginPage extends React.Component
 {
