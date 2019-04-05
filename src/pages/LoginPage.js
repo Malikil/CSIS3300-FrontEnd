@@ -8,6 +8,7 @@ class LoginPage extends React.Component
     {
         super(props);
         this.login = this.login.bind(this);
+        this.register = this.register.bind(this);
         this.state = {
             redirectToReferrer: false,
             username: "",
@@ -25,6 +26,31 @@ class LoginPage extends React.Component
             else
                 alert("Login unsuccessful");
         });
+    }
+
+    register()
+    {
+        if (!!!this.state.username)
+            alert("Enter a username")
+        else if (!!!this.state.password)
+            alert("Enter a password")
+        else
+            fetch(`${api}/put_user`, {
+                method: "GET",
+                headers: {
+                    "username": this.state.username,
+                    "password": this.state.password
+                }
+            }).then(response => response.json())
+            .then(data => {
+                if (!!data)
+                {
+                    if (data.exists)
+                        alert("That username is already taken");
+                    else if (data.userid)
+                        alert("Account created");
+                }
+            })
     }
 
     render()
@@ -60,6 +86,7 @@ class LoginPage extends React.Component
                     <tr>
                         <td colSpan="2" style={{textAlign: "center"}}>
                             <button onClick={this.login}>Login</button>
+                            <button onClick={this.register}>Register</button>
                         </td>
                     </tr>
                 </tbody>
